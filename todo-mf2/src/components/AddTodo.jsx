@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo,setOpen } from "host/addEditTodoSlice";
+import { FiX } from "react-icons/fi";
+
 import "../index.scss";
 
 const AddTodoForm = () => {
@@ -23,9 +25,14 @@ const AddTodoForm = () => {
     setDescription("");
   };
   return (
-    
-    <div className="m-8">
-    <h1  className="text-3xl font-bold mb-4 text-center">Add new task to do</h1>
+    <div className="items-center mx-auto px-4 py-10 my-10 max-h-[75vh] overflow-y-auto">
+    <h1  className="text-3xl font-bold mb-4 text-center  text-violet-800">Add New Task<span><button
+        className="m-6 bg-red-600 text-white rounded-full  focus:outline-none focus:bg-red-600"
+        onClick={()=>dispatch(setOpen(false))}
+      >
+        <FiX/>
+
+      </button></span></h1>
     <form onSubmit={handleSubmit} className="max-w-md mx-auto">
       <div className="mb-4">
         <label htmlFor="title" className="block text-gray-700">
@@ -54,10 +61,12 @@ const AddTodoForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        className="w-full bg-violet-600 text-white py-2 px-4 rounded-md hover:bg-violet-500 focus:outline-none focus:bg-violet-600"
       >
         Add Todo
       </button>
+      
+
     </form>
     </div>
   );
